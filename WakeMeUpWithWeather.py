@@ -26,7 +26,8 @@ messageStr = f"""Here is your weather forecast for {today}:
 # Load Environment Variables
 load_dotenv()
 
-#Notifications.sendMessage(os.getenv("TARGET"), os.getenv("CARRIER"), messageStr)
+#Send Notification
+Notifications.sendMessage(os.getenv("TARGET"), os.getenv("CARRIER"), messageStr)
 
 
 
