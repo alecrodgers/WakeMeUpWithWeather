@@ -365,3 +365,9 @@ FodyWeavers.xsd
 # Environment Files and Python Venv
 .env
 venv/
+
+# WMUWW PS Script
+wmuww.ps1
+
+# Misc Ignore Locations
+moria/
