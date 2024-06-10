@@ -365,3 +365,6 @@ FodyWeavers.xsd
 # Environment Files and Python Venv
 .env
 venv/
+
+# PS Scripts
+.ps1

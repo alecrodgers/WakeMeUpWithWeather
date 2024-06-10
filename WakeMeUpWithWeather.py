@@ -28,8 +28,3 @@ load_dotenv()
 
 #Send Notification
 Notifications.sendMessage(os.getenv("TARGET"), os.getenv("CARRIER"), messageStr)
-
-
-
-
-

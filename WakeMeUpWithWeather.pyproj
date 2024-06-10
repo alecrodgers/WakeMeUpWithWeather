@@ -32,6 +32,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include=".env" />
+    <Content Include="wmuww.ps1" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="venv\">
