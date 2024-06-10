@@ -7,7 +7,7 @@ from retry_requests import retry
 
 
 
-def pullWeatherData():
+def pullWeatherData(lat, long):
 	'''
 	Pulls Weather Data fir the current day using the Open-Meteo API. 
 	Returns a Dictionary containing Weather data.
@@ -22,8 +22,8 @@ def pullWeatherData():
 	# The order of variables in hourly or daily is important to assign them correctly below
 	url = "https://api.open-meteo.com/v1/forecast"
 	params = {
-		"latitude": 32.07, #Savannah Lat
-		"longitude": -81.08, #Savannah Long
+		"latitude": lat,
+		"longitude": long, 
 		"daily": ["temperature_2m_max", "temperature_2m_min", "sunrise", "sunset", "rain_sum", "showers_sum"],
 		"temperature_unit": "fahrenheit",
     		"precipitation_unit": "inch",

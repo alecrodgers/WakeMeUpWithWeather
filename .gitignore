@@ -366,8 +366,8 @@ FodyWeavers.xsd
 .env
 venv/
 
-# PS Scripts
-.ps1
+# WMUWW PS Script
+wmuww.ps1
 
 # Misc Ignore Locations
 moria/

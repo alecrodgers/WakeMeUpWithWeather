@@ -10,35 +10,25 @@ import WeatherData
 import Notifications
 
 
-# Pull Weather Data for Today
-weatherData = WeatherData.pullWeatherData()
+def buildWeatherMessage(weatherData, location="Your"):
+    # Construct Weather Message String
+    messageStr = f"""\r\n\r\n{location} Weather forecast for {today}:\nToday's High is {weatherData["Today's High"]}...\nToday's Low is {weatherData["Today's Low"]}...\nThere is a {weatherData["Today's Showers"]}% chance of rain today!"""
+    return messageStr
+   
+
 
 #Get Today's Date
 today = datetime.today().strftime('%m-%d-%Y')
 
-# Construct Weather Message String
-messageStr = f"""Here is your weather forecast for {today}:
-  Today's High is {weatherData["Today's High"]}...
-  Today's Low is {weatherData["Today's Low"]}...
-  There is a {weatherData["Today's Showers"]}% chance of rain today!"""
-
-
-
-# Load Environment Variables
-load_dotenv()
-
-
 #Load Recepients from File
-subscribers = {}
-load_dotenv()
+load_dotenv() # Load Environment Variables
 with open(os.getenv("SUBSCRIBERS"), 'r') as subFile:
+       
     
     #Create csvReader
     csvReader = csv.reader(subFile)
+    header = next(csvReader)
 
     for row in csvReader:
-        subscribers[row[0]] = row[1]
-
-#Send Notification
-for phone, carrier in subscribers.items():
-    Notifications.sendMessage(phone, carrier, messageStr)
+        weatherData = WeatherData.pullWeatherData(float(row[2]), float(row[3]))
+        Notifications.sendMessage(row[0], row[1], buildWeatherMessage(weatherData,row[4]))
