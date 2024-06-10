@@ -368,3 +368,6 @@ venv/
 
 # PS Scripts
 .ps1
+
+# Misc Ignore Locations
+moria/

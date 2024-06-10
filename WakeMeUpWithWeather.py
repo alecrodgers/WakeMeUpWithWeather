@@ -2,6 +2,7 @@ import datetime
 from logging import getLogger
 import pprint
 import os
+import csv
 from datetime import datetime
 from dotenv import load_dotenv
 
@@ -26,5 +27,18 @@ messageStr = f"""Here is your weather forecast for {today}:
 # Load Environment Variables
 load_dotenv()
 
+
+#Load Recepients from File
+subscribers = {}
+load_dotenv()
+with open(os.getenv("SUBSCRIBERS"), 'r') as subFile:
+    
+    #Create csvReader
+    csvReader = csv.reader(subFile)
+
+    for row in csvReader:
+        subscribers[row[0]] = row[1]
+
 #Send Notification
-Notifications.sendMessage(os.getenv("TARGET"), os.getenv("CARRIER"), messageStr)
+for phone, carrier in subscribers.items():
+    Notifications.sendMessage(phone, carrier, messageStr)
